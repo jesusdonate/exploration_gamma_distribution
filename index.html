@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gamma Distribution | Home</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body data-page>
+  <header class="topbar">
+    <nav class="nav container">
+      <a class="brand" href="index.html">Gamma Distribution</a>
+      <div class="nav-links">
+        <a class="nav-link active" href="index.html">Home</a>
+        <a class="nav-link" href="interactive.html">Interactive</a>
+        <a class="nav-link" href="application.html">Applications</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero card">
+      <h1>Gamma Distribution</h1>
+      <p class="lead">Assignment from STAT 520 - Statistical Inference.</p>
+    </section>
+
+    <section class="card content-card">
+      <h2>Gamma PDF</h2>
+      <p class="equation">
+        \[
+          f(x;\alpha,\beta)=\frac{1}{\Gamma(\alpha)\beta^\alpha}x^{\alpha-1}e^{-x/\beta},\quad x>0
+        \]
+      </p>
+      <div class="two-col">
+        <article class="soft-panel">
+          <h3>Parameters</h3>
+          <p><strong>\(\alpha\)</strong> (alpha): this parameter is know as the <b>shape parameter</b>
+          because \(\alpha\) controls the overall shape of the distribution rather than simply shifting 
+          or stretching/shrinking it.</p>
+          <p><strong>\(\beta\)</strong> (beta): this parameter is called the scale <b>parameter</b>
+          because \(\beta\) changes the distribution by stretching or compressing its shape. The larger 
+          the scale parameter, the more spread out the distribution.</p>
+        </article>
+        <article class="soft-panel">
+          <h3>Support</h3>
+          <p><strong>x</strong>, <strong>\(\alpha\)</strong>, and <strong>\(\beta\)</strong> must be 
+            positive real numbers.</p>
+          <p>Use the interactive page to tune parameters and inspect area under the curve.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="card content-card">
+      <h2>Moments</h2>
+      <div class="stat-grid">
+        <article class="soft-panel">
+          <h3>Expected Value</h3>
+          <p class="equation compact">\(\mathbb{E}[X]=\alpha\beta\)</p>
+        </article>
+        <article class="soft-panel">
+          <h3>Variance</h3>
+          <p class="equation compact">\(\mathrm{Var}(X)=\alpha\beta^2\)</p>
+        </article>
+      </div>
+      <div class="derivation-wrap">
+        <h3>Derivation Details</h3>
+        <div class="derivation-grid">
+          <article class="soft-panel">
+            <h3>Expected Value</h3>
+            <div class="math-stack">
+              <p class="math-step">\[E(X)=\int_0^\infty x\cdot\frac{1}{\Gamma(\alpha)\beta^\alpha}x^{\alpha-1}e^{-x/\beta}\,dx\]</p>
+              <p class="math-step">\[=\frac{1}{\Gamma(\alpha)\beta^\alpha}\int_0^\infty x^\alpha e^{-x/\beta}\,dx\]</p>
+              <p class="math-step">\[=\frac{\Gamma(\alpha+1)\beta^{\alpha+1}}{\Gamma(\alpha)\beta^\alpha}\int_0^\infty\frac{1}{\Gamma(\alpha+1)\beta^{\alpha+1}}x^\alpha e^{-x/\beta}\,dx\]</p>
+              <p class="math-step">\[=\frac{\alpha\Gamma(\alpha)\beta}{\Gamma(\alpha)}\cdot1\]</p>
+              <p class="math-step math-final">\[E(X)=\alpha\beta\]</p>
+            </div>
+          </article>
+
+          <article class="soft-panel">
+            <h3>Variance</h3>
+            <div class="math-stack">
+              <p class="math-step">\[E(X^2)=\int_0^\infty x^2\cdot\frac{1}{\Gamma(\alpha)\beta^\alpha}x^{\alpha-1}e^{-x/\beta}\,dx\]</p>
+              <p class="math-step">\[=\frac{1}{\Gamma(\alpha)\beta^\alpha}\int_0^\infty x^{\alpha+1}e^{-x/\beta}\,dx\]</p>
+                            <p class="math-step">\[=\frac{\Gamma(\alpha+2)\beta^{\alpha+2}}{\Gamma(\alpha)\beta^\alpha}\int_0^\infty\frac{1}{\Gamma(\alpha+2)\beta^{\alpha+2}}x^\alpha e^{-x/\beta}\,dx\]</p>
+              <p class="math-step">\[=\frac{\Gamma(\alpha+2)\beta^{\alpha+2}}{\Gamma(\alpha)\beta^\alpha}\cdot1\]</p>
+              <p class="math-step">\[=(\alpha+1)\alpha\beta^2=\alpha^2\beta^2+\alpha\beta^2\]</p>
+              <p class="math-step">\[V(X)=E(X^2)-[E(X)]^2\]</p>
+              <p class="math-step">\[=\alpha^2\beta^2+\alpha\beta^2-(\alpha\beta)^2\]</p>
+              <p class="math-step math-final">\[V(X)=\alpha\beta^2\]</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="card content-card">
+      <h2>Transformations</h2>
+      <p class="lead">Univariate or bivariate transformations from the gamma distribution can generate additional random variables. This section is set up for three transformations.</p>
+      <details class="soft-panel derivation-wrap transform-item">
+        <summary>
+          <span class="transform-title">Transformation 1: Gamma to Chi-Square</span>
+          <span class="transform-result">\(\frac{2X}{\beta} \sim \chi^2_{2\alpha}\)</span>
+        </summary>
+        <div class="transform-body">
+        <h3>Recall:</h3>
+
+        <p>
+        \[
+        \frac{2X}{\beta} \sim \chi^2_{2\alpha},
+        \quad \text{where } X \sim \Gamma(\alpha,\beta)
+        \]
+        </p>
+
+        <hr>
+
+        <p>
+        Let
+        \[
+        Y = \frac{2X}{\beta}
+        \]
+        </p>
+
+        <p>
+        Then
+        \[
+        x = \frac{\beta y}{2}
+        \]
+        and
+        \[
+        \frac{dx}{dy} = \frac{\beta}{2}
+        \]
+        </p>
+
+        <p>
+        New support:
+        \[
+        0 < x < \infty \implies 0 < \frac{\beta y}{2} < \infty \implies 0 < y < \infty
+        \]
+        </p>
+
+        <hr>
+
+        <p>
+        Using the transformation formula:
+        </p>
+
+        <p>
+        \[
+        \begin{align*}
+        f_Y(y)
+        &= f_X\left(\frac{\beta y}{2}\right) \left|\frac{dx}{dy}\right|, \qquad 0 < y < \infty \\[6pt]
+        &= \frac{1}{\Gamma(\alpha)\beta^\alpha} 
+          \left(\frac{\beta y}{2}\right)^{\alpha-1} 
+          e^{-\frac{\beta y}{2\beta}} 
+          \cdot \frac{\beta}{2} \\[6pt]
+        &= \frac{1}{\Gamma(\alpha)\beta^\alpha} 
+          \cdot \frac{\beta^{\alpha-1} y^{\alpha-1}}{2^{\alpha-1}} 
+          \cdot e^{-y/2} 
+          \cdot \frac{\beta}{2} \\[6pt]
+        &= \frac{1}{\Gamma(\alpha)\beta^\alpha} 
+          \cdot \frac{\beta^\alpha y^{\alpha-1}}{2^\alpha} 
+          \cdot e^{-y/2} \\[6pt]
+        &= \frac{1}{\Gamma(\alpha)2^\alpha} 
+          y^{\alpha-1} e^{-y/2} \\[6pt]
+        &= \frac{1}{\Gamma\left(\frac{2\alpha}{2}\right) 2^{2\alpha/2}} 
+          y^{\frac{2\alpha}{2} - 1} e^{-y/2}, \qquad 0 < y < \infty
+        \end{align*}
+        \]
+        </p>
+
+        <p>
+        This is the pdf of:
+        </p>
+
+        <p>
+        \[
+        \chi^2_{2\alpha}
+        \]
+        </p>
+
+        <hr>
+
+        <p>
+        Thus,
+        \[
+        \boxed{Y = \frac{2X}{\beta} \sim \chi^2_{2\alpha}}
+        \]
+        </p>
+        </div>
+      </details>
+      <details class="soft-panel derivation-wrap transform-item">
+        <summary>
+          <span class="transform-title">Transformation 2: Gamma to Beta</span>
+          <span class="transform-result">\(\frac{X_1}{X_1+X_2} \sim \operatorname{Beta}(\alpha,\beta)\)</span>
+        </summary>
+        <div class="transform-body">
+
+        <p><strong>Recall:</strong> \(X_1 \sim \Gamma(\alpha,1)\), \(X_2 \sim \Gamma(\beta,1)\), and \(X_1 \perp X_2\).</p>
+
+        <p>\[
+          \frac{X_1}{X_1+X_2} \sim \operatorname{Beta}(\alpha,\beta)
+          \]</p>
+
+        <p><strong>Joint PDF:</strong></p>
+        <p>\[
+        f_{X_1,X_2}(x_1,x_2) = \frac{1}{\Gamma(\alpha)\Gamma(\beta)} 
+                                x_1^{\alpha-1} x_2^{\beta-1} e^{-(x_1+x_2)},
+                                \qquad x_1>0,\; x_2>0
+        \]</p>
+
+        <hr>
+
+        Let \(Y_1 = X_1 + X_2\) and \(Y_2 = \frac{X_1}{X_1+X_2}\).</p>
+
+        <p>Then the inverse transformation is</p>
+        <p>\[
+        x_1 = y_1 y_2, \qquad x_2 = y_1(1-y_2)
+        \]</p>
+
+        <p>The Jacobian:</p>
+        <p>\[
+        J = \begin{vmatrix} y_2 & y_1 \\ 1-y_2 & -y_1 \end{vmatrix} = -y_1 \quad\Rightarrow\quad |J| = y_1
+        \]</p>
+
+        <p>Support: \(0 < y_1 < \infty,\; 0 < y_2 < 1\).</p>
+
+        <hr>
+
+        <p>\[
+        \begin{align*}
+        f_{Y_1,Y_2}(y_1,y_2)
+        &= f_{X_1,X_2}(y_1y_2,\; y_1(1-y_2)) \cdot |J| \\[6pt]
+        &= \frac{1}{\Gamma(\alpha)\Gamma(\beta)} 
+          (y_1y_2)^{\alpha-1} 
+          (y_1(1-y_2))^{\beta-1} 
+          e^{-(y_1y_2 + y_1(1-y_2))} \cdot y_1 \\[6pt]
+        &= \frac{1}{\Gamma(\alpha)\Gamma(\beta)} 
+          y_1^{\alpha-1}y_2^{\alpha-1} 
+          y_1^{\beta-1}(1-y_2)^{\beta-1} 
+          e^{-y_1} \cdot y_1 \\[6pt]
+        &= \frac{1}{\Gamma(\alpha)\Gamma(\beta)} 
+          y_1^{\alpha+\beta-1} 
+          y_2^{\alpha-1} 
+          (1-y_2)^{\beta-1} 
+          e^{-y_1}
+        \end{align*}
+        \]</p>
+
+        <hr>
+
+        <p>\[
+        \begin{align*}
+        f_{Y_2}(y_2)
+        &= \int_0^\infty \frac{1}{\Gamma(\alpha)\Gamma(\beta)} 
+          y_1^{\alpha+\beta-1} 
+          y_2^{\alpha-1} 
+          (1-y_2)^{\beta-1} 
+          e^{-y_1} \, dy_1 \\[6pt]
+        &= \frac{1}{\Gamma(\alpha)\Gamma(\beta)} 
+          y_2^{\alpha-1}(1-y_2)^{\beta-1} 
+          \int_0^\infty y_1^{\alpha+\beta-1} e^{-y_1} \, dy_1 \\[6pt]
+        &= \frac{1}{\Gamma(\alpha)\Gamma(\beta)} 
+          y_2^{\alpha-1}(1-y_2)^{\beta-1} 
+          \Gamma(\alpha+\beta)
+        \end{align*}
+        \]</p>
+
+        <hr>
+
+        <p>\[
+        f_{Y_2}(y_2) = \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)} 
+                      y_2^{\alpha-1}(1-y_2)^{\beta-1}, \qquad 0 < y_2 < 1
+        \]</p>
+
+        <p>This is the PDF of a \(\operatorname{Beta}(\alpha,\beta)\) distribution.</p>
+
+        <p>\[
+        \boxed{Y_2=\frac{X_1}{X_1+X_2} \sim \operatorname{Beta}(\alpha,\beta)}
+        \]</p>
+        </div>
+      </details>
+            <details class="soft-panel derivation-wrap transform-item">
+        <summary>
+          <span class="transform-title">Transformation 3: Gamma to Gamma with beta parameter 1</span>
+          <span class="transform-result">\(\frac{X}{\beta} \sim \Gamma(\alpha, 1)\)</span>
+        </summary>
+        <div class="transform-body">
+
+        <p>Let \(X \sim \Gamma(\alpha, \beta)\) and define</p>
+
+        <p>\[
+        Y = \frac{X}{\beta}.
+        \]</p>
+
+        <hr>
+
+        <p>\[
+        x = \beta y, \qquad \frac{dx}{dy} = \beta
+        \]</p>
+
+        <p>\[
+        0 < x < \infty \;\implies\; 0 < \beta y < \infty \;\implies\; 0 < y < \infty
+        \]</p>
+
+        <hr>
+
+        <p>\[
+        \begin{align*}
+        f_Y(y)
+        &= f_X(\beta y) \left|\frac{dx}{dy}\right|, \qquad 0 < y < \infty \\[6pt]
+        &= \frac{1}{\Gamma(\alpha)\beta^\alpha} 
+          (\beta y)^{\alpha-1} 
+          e^{-\beta y / \beta} 
+          \cdot \beta \\[6pt]
+        &= \frac{1}{\Gamma(\alpha)\beta^\alpha} 
+          \beta^{\alpha-1} y^{\alpha-1} 
+          e^{-y} 
+          \cdot \beta \\[6pt]
+        &= \frac{1}{\Gamma(\alpha)\beta^\alpha} 
+          \beta^\alpha y^{\alpha-1} 
+          e^{-y} \\[6pt]
+        &= \frac{1}{\Gamma(\alpha)} 
+          y^{\alpha-1} e^{-y}, \qquad 0 < y < \infty
+        \end{align*}
+        \]</p>
+
+        <hr>
+
+        <p>Thus,</p>
+
+        <p>\[
+        \boxed{Y = \frac{X}{\beta} \sim \Gamma(\alpha, 1)}
+        \]</p>
+        </div>
+      </details>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

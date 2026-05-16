@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gamma Distribution | Interactive</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page>
+  <header class="topbar">
+    <nav class="nav container">
+      <a class="brand" href="index.html">Gamma Distribution</a>
+      <div class="nav-links">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link active" href="interactive.html">Interactive</a>
+        <a class="nav-link" href="application.html">Applications</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero card">
+      <h1>Interactive Gamma Distribution</h1>
+    </section>
+
+    <section class="card content-card">
+      <div class="control-grid">
+        <article class="soft-panel">
+          <h2>Parameters</h2>
+          <label for="alphaRange">Alpha (&alpha;)</label>
+          <input id="alphaRange" type="range" min="0" max="15" step="0.1" value="2">
+          <input id="alphaInput" type="number" min="0" step="0.1" value="2">
+
+          <label for="betaRange">Beta (&beta;)</label>
+          <input id="betaRange" type="range" min="0" max="15" step="0.1" value="2">
+          <input id="betaInput" type="number" min="0" step="0.1" value="2">
+
+        </article>
+
+        <article class="soft-panel">
+          <h2>Interval Area: P(x<sub>1</sub> &lt; X &lt; x<sub>2</sub>)</h2>
+          <label for="xMin">x<sub>1</sub></label>
+          <input id="xMin" type="number" min="0" step="0.1" value="1">
+
+          <label for="xMax">x<sub>2</sub></label>
+          <input id="xMax" type="number" min="0" step="0.1" value="5">
+
+          <p id="areaResult" class="metric">Area: -</p>
+        </article>
+      </div>
+
+      <div class="plot-wrap">
+        <canvas id="gammaCanvas" width="1000" height="520" aria-label="Gamma distribution plot"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="gamma.js"></script>
+</body>
+</html>

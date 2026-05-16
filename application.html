@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gamma Distribution | Applications</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body data-page>
+  <header class="topbar">
+    <nav class="nav container">
+      <a class="brand" href="index.html">Gamma Distribution</a>
+      <div class="nav-links">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="interactive.html">Interactive</a>
+        <a class="nav-link active" href="application.html">Applications</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero card">
+      <h1>Applications of the Gamma Distribution</h1>
+      <p class="lead">Examples of real-world situations where gamma models positive, right-skewed continuous outcomes.</p>
+    </section>
+
+    <section class="card content-card">
+      <div class="example-grid">
+        <article class="soft-panel example-card">
+          <h2>1. Hospital Waiting Times</h2>
+          <p>The time (in minutes) a patient waits before seeing a doctor can be modeled as \(X\sim\Gamma(\alpha,\beta)\).</p>
+          <p><strong>\(\alpha\)</strong> gives strong right-skew (many short waits with a few very long waits), which is less predictable. Larger \(\alpha\) makes waits more predictable.</p>
+          <p><strong>\(\beta\)</strong> controls overall size. Small \(\beta\) means smaller average waits; larger \(\beta\) means longer average waits.</p>
+          <p>In practice, larger \(\alpha\) and smaller \(\beta\) are preferred.</p>
+          <p class="dataset-link"><strong>Dataset:</strong> <a href="https://www.kaggle.com/datasets/rivalytics/er-wait-time" target="_blank" rel="noopener noreferrer">Kaggle ER Wait Time</a></p>
+        </article>
+
+        <article class="soft-panel example-card">
+          <h2>2. Insurance Claim Sizes</h2>
+          <p>Claim amounts are positive and often right-skewed, making gamma a useful model.</p>
+          <p><strong>\(\alpha\)</strong> influences tail behavior and claim variability.</p>
+          <p><strong>\(\beta\)</strong> scales claim severity and affects expected payout.</p>
+          <p>Higher \(\alpha\) with lower \(\beta\) often implies more stable and lower average claim costs.</p>
+          <p class="dataset-link"><strong>Dataset:</strong> <a href="https://support.minitab.com/en-us/datasets/getting-started-guide-data-sets/insurance-fraud-data/" target="_blank" rel="noopener noreferrer">Minitab Insurance Fraud Data</a></p>
+        </article>
+
+        <article class="soft-panel example-card">
+          <h2>3. Rainfall Intensity</h2>
+          <p>Rainfall amount per interval can be modeled using gamma when values are positive and skewed.</p>
+          <p><strong>\(\alpha\)</strong> reflects consistency of storms; smaller values suggest more irregular rainfall.</p>
+          <p><strong>\(\beta\)</strong> controls overall scale; larger values correspond to heavier rainfall levels.</p>
+          <p>Different climates can be compared by estimated \((\alpha,\beta)\) values.</p>
+          <p class="dataset-link"><strong>Dataset:</strong> <a href="https://www.kaggle.com/datasets/kaustubhdhote/rainfall-dataset" target="_blank" rel="noopener noreferrer">Kaggle Rainfall Dataset</a></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
