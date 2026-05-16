@@ -38,8 +38,8 @@
         <article class="soft-panel example-card">
           <h2>1. Hospital Waiting Times</h2>
           <p>The time (in minutes) a patient waits before seeing a doctor can be modeled as \(X\sim\Gamma(\alpha,\beta)\).</p>
-          <p><strong>\(\alpha\)</strong> gives strong right-skew (many short waits with a few very long waits), which is less predictable. Larger \(\alpha\) makes waits more predictable.</p>
-          <p><strong>\(\beta\)</strong> controls overall size. Small \(\beta\) means smaller average waits; larger \(\beta\) means longer average waits.</p>
+          <p>Small <strong>\(\alpha\)</strong> gives strong right-skew (many short waits with a few very long waits), which is less predictable. Larger \(\alpha\) makes waits more predictable.</p>
+          <p>Small <strong>\(\beta\)</strong> means smaller average waits and larger \(\beta\) means longer average waits.</p>
           <p>In practice, larger \(\alpha\) and smaller \(\beta\) are preferred.</p>
           <p class="dataset-link"><strong>Dataset:</strong> <a href="https://www.kaggle.com/datasets/rivalytics/er-wait-time" target="_blank" rel="noopener noreferrer">Kaggle ER Wait Time</a></p>
         </article>
@@ -47,8 +47,8 @@
         <article class="soft-panel example-card">
           <h2>2. Insurance Claim Sizes</h2>
           <p>Claim amounts are positive and often right-skewed, making gamma a useful model.</p>
-          <p><strong>\(\alpha\)</strong> influences tail behavior and claim variability.</p>
-          <p><strong>\(\beta\)</strong> scales claim severity and affects expected payout.</p>
+          <p>Small <strong>\(\alpha\)</strong> means the distribution has a strong right skew, so claims can be harder to predict since there is a high probability of large claims. Large <strong>\(\alpha\)</strong> means the distribution has a more symmertic shape to it. Claims are more predictable.</p>
+          <p>Small <strong>\(\beta\)</strong> means lower average payouts and larger \(\beta\) means higher average payouts.</p>
           <p>Higher \(\alpha\) with lower \(\beta\) often implies more stable and lower average claim costs.</p>
           <p class="dataset-link"><strong>Dataset:</strong> <a href="https://support.minitab.com/en-us/datasets/getting-started-guide-data-sets/insurance-fraud-data/" target="_blank" rel="noopener noreferrer">Minitab Insurance Fraud Data</a></p>
         </article>
@@ -56,9 +56,9 @@
         <article class="soft-panel example-card">
           <h2>3. Rainfall Intensity</h2>
           <p>Rainfall amount per interval can be modeled using gamma when values are positive and skewed.</p>
-          <p><strong>\(\alpha\)</strong> reflects consistency of storms; smaller values suggest more irregular rainfall.</p>
-          <p><strong>\(\beta\)</strong> controls overall scale; larger values correspond to heavier rainfall levels.</p>
-          <p>Different climates can be compared by estimated \((\alpha,\beta)\) values.</p>
+          <p>Small <strong>\(\alpha\)</strong> means the distribution has a strong right skew, so claims can be harder to predict since there is a high probability of large claims. Large <strong>\(\alpha\)</strong> means the distribution has a more symmertic shape to it. Claims are more predictable.</p>
+          <p>Small <strong>\(\beta\)</strong> means lower average payouts and larger \(\beta\) means higher average payouts.</p>
+          <p>The best parameter values depend on the region; e.g. in a desert, we would prefer a smaller \(\alpha\), since many days have zero or small traces of rain. But in rainforests, the opposite is true.</p>
           <p class="dataset-link"><strong>Dataset:</strong> <a href="https://www.kaggle.com/datasets/kaustubhdhote/rainfall-dataset" target="_blank" rel="noopener noreferrer">Kaggle Rainfall Dataset</a></p>
         </article>
       </div>
