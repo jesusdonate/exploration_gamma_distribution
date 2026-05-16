@@ -213,7 +213,7 @@
     drawCurve();
 
     const area = integratePdf(state.alpha, state.beta, state.xLower, state.xUpper);
-    areaResult.textContent = `Probability that X is between ${state.xLower.toFixed(2)} and ${state.xUpper.toFixed(2)}] is ${(area* 100).toFixed(2)}%`;
+    areaResult.textContent = `Probability that X is between ${state.xLower.toFixed(2)} and ${state.xUpper.toFixed(2)} is ${(area* 100).toFixed(2)}%`;
   }
 
   function bindLinkedInputs(range, number) {
